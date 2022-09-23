@@ -194,6 +194,7 @@ class LinkedList implements Iterator {
 
     public function display() {
         echo "Total book titles: " . $this->_totalNode . "\n";
+        
         $currentNode = $this->_firstNode;
         while ($currentNode !== NULL) {
             echo $currentNode->data . "\n";
