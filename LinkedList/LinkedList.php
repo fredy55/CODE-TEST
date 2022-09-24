@@ -71,7 +71,7 @@ class LinkedList{
 
             while($currentNode->next !== NULL){
                 
-                if($currentNode->data === 43){
+                if($currentNode->data === $pointer){
                     $newNode->next = $currentNode;
                     $prevNode->next = $newNode;
                     $this->counter++;
@@ -97,7 +97,7 @@ class LinkedList{
            
             while($currentNode->next !== NULL){
                 
-                if($currentNode->data === 43){
+                if($currentNode->data === $pointer){
                     $nextNode = $currentNode->next;
                     $currentNode->next = $newNode;
                     $newNode->next = $nextNode;
@@ -109,6 +109,31 @@ class LinkedList{
             }
             
              
+        }
+    }
+
+    /**
+     * Search for a node by index in the linkedlist
+     */
+    public function searchNode($index){
+        
+        if($this->headNode !== NULL){
+            $currentNode = $this->headNode;
+            $count = 0;
+           
+            while($currentNode->next !== NULL){
+                
+                if($count === $index){
+                    return $currentNode->data;  
+                }
+
+                $currentNode = $currentNode->next;
+                $count++;
+            }
+
+            return "NOT FOUND!";
+        }else{
+            return "EMPTY LIST!";
         }
     }
 
@@ -193,7 +218,29 @@ class LinkedList{
         return FALSE;
     }
 
+    /**
+     * Reverse the nodes of the linkedlist
+     */
+    public function reverseNode(){
+        
+        if($this->headNode !== NULL){
+            if($this->headNode->next !== NULL){
 
+                $currentNode = $this->headNode;
+                $reverseNode = NULL;
+                $tempNode = NULL;
+            
+                while($currentNode !== NULL){
+                    $tempNode = $currentNode->next;
+                    $currentNode->next = $reverseNode; //Flips the node
+                    $reverseNode = $currentNode;
+                    $currentNode = $tempNode;
+                }
+
+                $this->headNode = $reverseNode;
+            }
+        }
+    }
 
     /**
      * Display LinkedList nodes
@@ -218,13 +265,17 @@ $myList->insertNodeAtStart(5);
 $myList->insertNodeBefore(34, 43);
 $myList->insertNodeAfter(90, 43);
 
-$myList->deleteLastNode();
-$myList->deleteFirstNode();
-$myList->deleteNode(34);
+// $myList->deleteLastNode();
+// $myList->deleteFirstNode();
+// $myList->deleteNode(34);
+
+$myList->reverseNode();
 
 var_dump($myList);
 
 $myList->display();
+
+echo "<br>".$myList->searchNode(4);
 
 // foreach ($myList as $list) {
 //      echo $list->data;

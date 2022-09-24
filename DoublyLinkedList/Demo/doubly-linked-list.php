@@ -122,7 +122,6 @@ class DoublyLinkedList{
     }
 
 
-
     //display
     public function display(){
         $current = $this->headNode;
