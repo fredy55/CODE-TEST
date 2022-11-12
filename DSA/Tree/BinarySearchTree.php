@@ -125,8 +125,8 @@ class BinarySearchTree{
     }
 
     /**
-     * Delete a node from the tree
-     */
+    * Delete a node from the tree
+    */
     public function deleteNode($currentNode){
 
     }
@@ -137,8 +137,6 @@ class BinarySearchTree{
     public function treeHeight(){
 
     }
-
-
 }
 
 //Create the Tree Object
