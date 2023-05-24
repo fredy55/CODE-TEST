@@ -5,16 +5,23 @@
  * @return Integer[]
  */
 function plusOne($digits) {
-    $lastIndex = count($digits)-1;
-    $lastDigit = $digits[$lastIndex];
+    $highestIndex = count($digits) - 1; 
 
-    $lastVal = $lastDigit === 9 ? [1, 0] : [$lastDigit+1];
-    array_splice($digits, $lastIndex, 1, $lastVal);
-    
+    for ($n = $highestIndex; $n >= 0; $n--) {
+
+        if (9 > $digits[$n]) {
+            $digits[$n] += 1;
+            return $digits;
+        }
+        $digits[$n] = 0;
+    }
+
+    array_unshift($digits, 1);
+
     return $digits;
 }
 
-$digits = [9,9];
+$digits = [8,9,9,9];
 // echo plusOne($digits);
 echo '<pre>';
 print_r(plusOne($digits));
